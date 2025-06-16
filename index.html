@@ -1,91 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ivan Nicholo Meneses Subscription</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ivan Nicholo Meneses | Subscription Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: white;
-      text-align: center;
-      padding: 50px;
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out forwards;
     }
-    img {
-      max-width: 300px;
-      border-radius: 15px;
-      margin: 20px 0;
+    .pulse {
+      animation: pulse 2s infinite;
     }
-    a.button {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 25px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 18px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    a.button:hover {
-      background-color: #0056b3;
-    }
-    .subscription-buttons {
-      margin-top: 20px;
-    }
-    .note {
-      font-style: italic;
-      margin-top: 20px;
-      font-size: 16px;
-    }
-    .love-message {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    .gallery {
-      margin-top: 20px;
-    }
-    .gallery img {
-      max-width: 200px;
-      margin: 10px;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
-<body>
-  <h1>Welcome to Ivan Nicholo Meneses Subscription Platform</h1>
-  <p>Apply for meet and greet reservation tickets below.</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ivan_Meneses_2024.jpg/800px-Ivan_Meneses_2024.jpg" alt="Ivan Nicholo Meneses">
-  <br>
-  <a href="https://t.me/ivan_nicho" class="button">Contact on Telegram</a>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col p-6">
 
-  <div class="subscription-buttons">
-    <h2>Subscription Types</h2>
-    <a href="https://t.me/ivan_nicho" class="button">Pictures - $150</a>
-    <a href="https://t.me/ivan_nicho" class="button">Videos - $250</a>
-    <a href="https://t.me/ivan_nicho" class="button">Pictures and Videos - $400</a>
-    <a href="https://t.me/ivan_nicho" class="button">Private Concert - $1000</a>
-    <a href="https://t.me/ivan_nicho" class="button">Emotional Counseling - $450</a>
-    <a href="https://t.me/ivan_nicho" class="button">Meet and Greet Reservation Ticket - $3000</a>
-    <a href="https://t.me/ivan_nicho" class="button">Subscription to VIP Member - $100</a>
-    <a href="https://t.me/ivan_nicho" class="button">Subscription to VVIP Member - $200</a>
-  </div>
+  <!-- Header -->
+  <header class="bg-gray-800 rounded-2xl shadow-xl p-6 mb-6 text-center fade-in">
+    <h1 class="text-4xl font-extrabold text-yellow-400">Welcome to Ivan Nicholo Meneses' Subscription Platform</h1>
+    <p class="text-sm text-gray-300 mt-2">Exclusive experiences, subscriptions, and content</p>
+    <a href="https://t.me/ivan_nicho" target="_blank" class="inline-block mt-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-xl transition-all duration-300">
+      Connect on Telegram: @ivan_nicho
+    </a>
+  </header>
 
-  <div class="note">
-    <p>Note: It's legally acceptable to pay in installments.</p>
-    <p>My only Telegram account: @ivan_nicho</p>
-    <p>Don't be deceived by imposters, stay guided.</p>
-  </div>
+  <!-- Main Content -->
+  <main class="flex-grow max-w-4xl mx-auto space-y-8">
 
-  <div class="love-message">
-    <p>I love you all</p>
-  </div>
+    <!-- Meet and Greet Section -->
+    <section class="bg-gray-800 rounded-2xl shadow-xl p-6 fade-in">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">VVIP Meet & Greet Experience</h2>
+      <p class="text-sm text-gray-300 mb-4">Reserve your ultra-exclusive private meet and greet with Ivan Nicholo Meneses for $3,000.</p>
+      <div class="text-2xl font-bold text-white mb-2">$3,000</div>
+      <p class="text-sm text-gray-400 mb-4">One-time exclusive experience, limited to 4 sessions per month.</p>
+      <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300 mb-4">
+        <li>Private 2-hour session</li>
+        <li>Luxury transportation</li>
+        <li>Professional photography</li>
+        <li>Gourmet dinner</li>
+        <li>Personalized gift</li>
+        <li>VIP concierge service</li>
+        <li>Red carpet treatment</li>
+        <li>Signed memorabilia</li>
+      </ul>
+      <div id="meetGreetReserveButton" class="text-center">
+        <button onclick="toggleMeetGreet(true)" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 shadow-lg pulse">
+          Reserve Meet & Greet
+        </button>
+      </div>
+      <div id="meetGreetBookingSection" class="space-y-4 hidden mt-4">
+        <h3 class="text-lg font-semibold text-yellow-400">Select Your Experience</h3>
+        <label class="block">
+          <span class="block mb-1 text-sm">Choose Date & Location</span>
+          <select id="meetGreetDate" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">
+            <option value="">Select Date</option>
+            <option value="2025-07-20">July 20th, 2025 - Private Villa, Malibu</option>
+            <option value="2025-08-10">August 10th, 2025 - Luxury Yacht, Monaco</option>
+            <option value="2025-08-25">August 25th, 2025 - Penthouse Suite, NYC</option>
+            <option value="2025-09-15">September 15th, 2025 - Private Island, Bahamas</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="block mb-1 text-sm">Select Time Slot</span>
+          <select id="meetGreetTime" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">
+            <option value="">Select Time</option>
+            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+            <option value="4:30 PM - 6:30 PM">4:30 PM - 6:30 PM</option>
+            <option value="7:00 PM - 9:00 PM">7:00 PM - 9:00 PM</option>
+          </select>
+        </label>
+        <label class="block"><span class="block mb-1 text-sm">Number of Guests (max 4)</span>
+          <select id="meetGreetGuests" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+          </select>
+        </label>
+        <div class="flex justify-between mt-4">
+          <button onclick="toggleMeetGreet(false)" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl mr-2 transition-all duration-300">Back</button>
+          <button onclick="confirmMeetGreet()" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300">Confirm - $3,000</button>
+        </div>
+      </div>
+    </section>
 
-  <div class="gallery">
-    <h2>Gallery</h2>
-    <a href="#" class="button">View Gallery</a>
-    <div>
-      <img src="https://via.placeholder.com/200" alt="Ivan Nicholo Meneses Gallery Image" title="Please replace with actual hosted image URL">
-    </div>
-  </div>
+    <!-- Subscription Section -->
+    <section class="bg-gray-800 rounded-2xl shadow-xl p-6 fade-in">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">Subscriptions</h2>
+      <p class="text-sm text-gray-300 mb-4">Join Ivan's exclusive community with VVIP or VIP subscriptions.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- VVIP Subscription -->
+        <div class="bg-gray-700 p-4 rounded-xl">
+          <h3 class="text-xl font-semibold text-yellow-400">VVIP Subscription</h3>
+          <p class="text-2xl font-bold text-white mt-2">$250/month</p>
+          <ul class="list-disc pl-5 text-sm text-gray-300 mt-2">
+            <li>Exclusive monthly video calls</li>
+            <li>Priority event access</li>
+            <li>Personalized shoutouts</li>
+            <li>Private Telegram group</li>
+          </ul>
+          <button onclick="subscribe('VVIP', 250)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
+        </div>
+        <!-- VIP Subscription -->
+        <div class="bg-gray-700 p-4 rounded-xl">
+          <h3 class="text-xl font-semibold text-yellow-400">VIP Subscription</h3>
+          <p class="text-2xl font-bold text-white mt-2">$150/month</p>
+          <ul class="list-disc pl-5 text-sm text-gray-300 mt-2">
+            <li>Access to exclusive content</li>
+            <li>Event discounts</li>
+            <li>Monthly newsletters</li>
+            <li>Community Telegram group</li>
+          </ul>
+          <button onclick="subscribe('VIP', 150)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pictures and Videos Section -->
+    <section class="bg-gray-800 rounded-2xl shadow-xl p-6 fade-in">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">Pictures & Videos</h2>
+      <p class="text-sm text-gray-300 mb-4">Purchase exclusive pictures and videos from Ivan Nicholo Meneses for $400.</p>
+      <div class="text-2xl font-bold text-white mb-2">$400</div>
+      <p class="text-sm text-gray-400 mb-4">One-time purchase for a curated collection.</p>
+      <button onclick="purchaseMedia()" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg pulse">
+        Purchase Now
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 rounded-2xl shadow-xl p-6 mt-6 text-center fade-in">
+    <p class="text-sm text-gray-300">&copy; 2025 Ivan Nicholo Meneses. All rights reserved.</p>
+    <a href="https://t.me/ivan_nicho" target="_blank" class="text-yellow-400 hover:underline">Contact via Telegram: @ivan_nicho</a>
+  </footer>
+
+  <script>
+    function toggleMeetGreet(show) {
+      document.getElementById('meetGreetBookingSection').style.display = show ? 'block' : 'none';
+      document.getElementById('meetGreetReserveButton').style.display = show ? 'none' : 'block';
+    }
+
+    function confirmMeetGreet() {const date = document.getElementById('meetGreetDate').value;
+      const time = document.getElementById('meetGreetTime').value;
+      const guests = document.getElementById('meetGreetGuests').value;
+      if (!date || !time) {
+        alert('Please select a date and time.');
+        return;
+      }
+      alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nWe will contact you within 24 hours via Telegram (@ivan_nicho).`);
+    }
+
+    function subscribe(type, price) {
+      alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nWe will contact you via Telegram (@ivan_nicho) to finalize your subscription.`);
+    }
+
+    function purchaseMedia() {
+      alert('Thank you for purchasing Pictures & Videos ($400)!\nWe will contact you via Telegram (@ivan_nicho) with access details.');
+    }
+  </script>
+
 </body>
 </html>
