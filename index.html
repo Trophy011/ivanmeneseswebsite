@@ -1,218 +1,59 @@
+  <h2 class="text-lg font-semibold text-white mb-2">Platinum Inclusions</h2>  
+  <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300">  
+    <li>Private 2-hour exclusive session</li>  
+    <li>Luxury transportation included</li>  
+    <li>Professional photography session</li>  
+    <li>Gourmet dinner experience</li>  
+    <li>Personalized gift package</li>  
+    <li>VIP concierge service</li>  
+    <li>Red carpet treatment</li>  
+    <li>Signed memorabilia collection</li>  
+  </ul>  
+</div>  
 
-+202
--0
-lines changed
-Search within code
- 
-‎src/components/PremiumTicket.tsx
-+200
-Lines changed: 200 additions & 0 deletions
-Original file line number	Diff line number	Diff line change
-@@ -0,0 +1,200 @@
-import React, { useState } from 'react';
-import { Ticket, Crown, Calendar, MapPin, Users, Clock } from 'lucide-react';
-const PremiumTicket = () => {
-  const [showBooking, setShowBooking] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [guestCount, setGuestCount] = useState(1);
-  const exclusiveDates = [
-    { date: '2024-07-20', label: 'July 20th - Private Villa, Malibu' },
-    { date: '2024-08-10', label: 'August 10th - Luxury Yacht, Monaco' },
-    { date: '2024-08-25', label: 'August 25th - Penthouse Suite, NYC' },
-    { date: '2024-09-15', label: 'September 15th - Private Island, Bahamas' }
-  ];
-  const exclusiveTimeSlots = [
-    '2:00 PM - 4:00 PM', '4:30 PM - 6:30 PM', '7:00 PM - 9:00 PM'
-  ];
-  const handleReservation = () => {
-    console.log('Premium reservation:', { selectedDate, selectedTime, guestCount });
-    alert('Premium reservation request submitted! We will contact you within 24 hours.');
-  };
-  return (
-    <section className="py-20 px-4 bg-gradient-to-br from-black via-gray-900 to-purple-900">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 mb-6 animate-pulse">
-            <Ticket className="w-10 h-10 text-white" />
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent animate-fade-in">
-            Platinum Experience
-          </h2>
-          <p className="text-2xl text-gray-300 mb-8 animate-fade-in delay-100">
-            Ultra-exclusive private meet & greet in luxury locations
-          </p>
-          <div className="text-6xl font-bold text-yellow-400 mb-4 animate-bounce">
-            $3,000
-          </div>
-          <p className="text-gray-400 text-lg">One-time exclusive experience</p>
-        </div>
-        <div className="bg-gradient-to-br from-gray-800/80 to-black/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-yellow-500/20 animate-fade-in delay-200">
-          <div className="grid md:grid-cols-2 gap-8 mb-10">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-yellow-400 flex items-center">
-                <Crown className="w-6 h-6 mr-2 animate-pulse" />
-                Platinum Inclusions
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  'Private 2-hour exclusive session',
-                  'Luxury transportation included',
-                  'Professional photography session',
-                  'Gourmet dinner experience',
-                  'Personalized gift package',
-                  'VIP concierge service',
-                  'Red carpet treatment',
-                  'Signed memorabilia collection'
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-center text-gray-300 animate-fade-in" style={{ animationDelay: `${200 + (index * 100)}ms` }}>
-                    <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mr-3 animate-pulse" style={{ animationDelay: `${index * 200}ms` }}></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-yellow-400 flex items-center">
-                <MapPin className="w-6 h-6 mr-2 animate-pulse delay-100" />
-                Exclusive Locations
-              </h3>
-              <div className="space-y-3">
-                {exclusiveDates.map((location, index) => (
-                  <div key={index} className="p-4 bg-gray-700/50 rounded-xl border border-yellow-500/20 animate-fade-in" style={{ animationDelay: `${300 + (index * 100)}ms` }}>
-                    <p className="text-white font-medium">{location.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          {!showBooking ? (
-            <div className="text-center">
-              <button
-                onClick={() => setShowBooking(true)}
-                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-fade-in delay-500 animate-pulse"
-              >
-                Reserve Platinum Experience
-              </button>
-              <p className="text-gray-400 mt-4 text-sm">Limited to 4 exclusive sessions per month</p>
-            </div>
-          ) : (
-            <div className="space-y-6 animate-scale-in">
-              <h3 className="text-2xl font-bold text-center text-yellow-400 mb-6">Select Your Exclusive Experience</h3>
-              
-              <div>
-                <label className="flex items-center text-lg font-semibold text-white mb-4">
-                  <Calendar className="w-5 h-5 mr-2 animate-pulse" />
-                  Choose Exclusive Location & Date
-                </label>
-                <div className="grid gap-4">
-                  {exclusiveDates.map((dateOption) => (
-                    <label key={dateOption.date} className="cursor-pointer">
-                      <input
-                        type="radio"
-                        name="date"
-                        value={dateOption.date}
-                        checked={selectedDate === dateOption.date}
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        className="sr-only"
-                      />
-                      <div className={`p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
-                        selectedDate === dateOption.date 
-                          ? 'border-yellow-500 bg-yellow-500/20 animate-pulse' 
-                          : 'border-gray-600 hover:border-yellow-400'
-                      }`}>
-                        <span className="text-white">{dateOption.label}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="flex items-center text-lg font-semibold text-white mb-4">
-                    <Clock className="w-5 h-5 mr-2 animate-pulse delay-100" />
-                    Time Slot
-                  </label>
-                  <div className="space-y-2">
-                    {exclusiveTimeSlots.map((time) => (
-                      <label key={time} className="cursor-pointer block">
-                        <input
-                          type="radio"
-                          name="time"
-                          value={time}
-                          checked={selectedTime === time}
-                          onChange={(e) => setSelectedTime(e.target.value)}
-                          className="sr-only"
-                        />
-                        <div className={`p-3 rounded-lg border-2 transition-all duration-300 hover:scale-105 ${
-                          selectedTime === time 
-                            ? 'border-yellow-500 bg-yellow-500/20 text-yellow-300 animate-pulse' 
-                            : 'border-gray-600 text-gray-300 hover:border-yellow-400'
-                        }`}>
-                          {time}
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label className="flex items-center text-lg font-semibold text-white mb-4">
-                    <Users className="w-5 h-5 mr-2 animate-pulse delay-200" />
-                    Guests (Max 4)
-                  </label>
-                  <select
-                    value={guestCount}
-                    onChange={(e) => setGuestCount(Number(e.target.value))}
-                    className="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
-                  >
-                    {[1, 2, 3, 4].map((num) => (
-                      <option key={num} value={num}>
-                        {num} {num === 1 ? 'Guest' : 'Guests'}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <div className="flex gap-4 pt-6">
-                <button
-                  onClick={() => setShowBooking(false)}
-                  className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300"
-                >
-                  Back
-                </button>
-                <button
-                  onClick={handleReservation}
-                  disabled={!selectedDate || !selectedTime}
-                  className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 disabled:from-gray-600 disabled:to-gray-600 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 disabled:cursor-not-allowed"
-                >
-                  Confirm Reservation - $3,000
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-export default PremiumTicket;
-‎src/pages/Index.tsx
-+2
-Lines changed: 2 additions & 0 deletions
-Original file line number	Diff line number	Diff line change
-@@ -2,6 +2,7 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import SubscriptionTiers from '../components/SubscriptionTiers';
-import PremiumTicket from '../components/PremiumTicket';
-import MeetGreetBooking from '../components/MeetGreetBooking';
-import ContactSection from '../components/ContactSection';
+<div id="bookingSection" class="space-y-4 hidden">  
+  <h2 class="text-lg font-semibold text-yellow-400">Select Your Exclusive Experience</h2>  
 
-@@ -10,6 +11,7 @@ const Index = () => {
-    <div className="min-h-screen bg-gray-900">
-      <Hero />
-      <SubscriptionTiers />
-      <PremiumTicket />
-      <MeetGreetBooking />
-      <ContactSection />
-      </div>
+  <label class="block">  
+    <span class="block mb-1 text-sm">Choose Date & Location</span>  
+    <select id="dateSelect" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">  
+      <option value="">Select Date</option>  
+      <option value="2024-07-20">July 20th - Private Villa, Malibu</option>  
+      <option value="2024-08-10">August 10th - Luxury Yacht, Monaco</option>  
+      <option value="2024-08-25">August 25th - Penthouse Suite, NYC</option>  
+      <option value="2024-09-15">September 15th - Private Island, Bahamas</option>  
+    </select>  
+  </label>  
+
+  <label class="block">  
+    <span class="block mb-1 text-sm">Select Time Slot</span>  
+    <select id="timeSelect" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">  
+      <option value="">Select Time</option>  
+      <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>  
+      <option value="4:30 PM - 6:30 PM">4:30 PM - 6:30 PM</option>  
+      <option value="7:00 PM - 9:00 PM">7:00 PM - 9:00 PM</option>  
+    </select>  
+  </label>  
+
+  <label class="block">  
+    <span class="block mb-1 text-sm">Number of Guests (max 4)</span>  
+    <select id="guestCount" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-white">  
+      <option value="1">1 Guest</option>  
+      <option value="2">2 Guests</option>  
+      <option value="3">3 Guests</option>  
+      <option value="4">4 Guests</option>  
+    </select>  
+  </label>  
+
+  <div class="flex justify-between mt-4">  
+    <button onclick="toggleBooking(false)" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl mr-2 transition-all duration-300">Back</button>  
+    <button onclick="confirmReservation()" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300">Confirm - $3,000</button>  
+  </div>  
+</div>  
+
+<div id="reserveButton" class="text-center">  
+  <button onclick="toggleBooking(true)" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse">  
+    Reserve Platinum Experience  
+  </button>  
+  <p class="text-sm mt-2 text-gray-400">Limited to 4 exclusive sessions per month</p>  
+</div
