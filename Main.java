@@ -1,9 +1,1 @@
-package com.mycompany.myapp1;
 
-public class Main
-{
-  public static void main(String[] args)
-  {
-
-  }
-} delete broken image file
