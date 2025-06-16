@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ivan Nicholo Meneses | Subscription Website</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style> @keyframes clickAnimation {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.8; }
-  100% { transform: scale(0.9); opacity: 0; }
+  <style> .clicked {
+  transform: scale(1.1);
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .clicked {
@@ -156,6 +156,53 @@
   </footer>
 
   <script>
+function toggleMeetGreet(show) {
+  const bookingSection = document.getElementById('meetGreetBookingSection');
+  const reserveButton = document.getElementById('meetGreetReserveButton');
+  if (bookingSection && reserveButton) {
+    bookingSection.style.display = show ? 'block' : 'none';
+    reserveButton.style.display = show ? 'none' : 'block';
+  } else {
+    console.error('Error: meetGreetBookingSection or meetGreetReserveButton not found');
+  }
+}
 
-    HTML 
-    body
+function confirmMeetGreet() {
+  const date = document.getElementById('meetGreetDate')?.value;
+  const time = document.getElementById('meetGreetTime')?.value;
+  const guests = document.getElementById('meetGreetGuests')?.value;
+  if (!date || !time) {
+    alert('Please select a date and time.');
+    return;
+  }
+  alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nWe will contact you within 24 hours via Telegram (@ivan_nicho).`);
+}
+
+function subscribe(button, type, price) {
+  if (!button) {
+    console.error('Error: Button not found for subscribe');
+    return;
+  }
+  console.log(`Subscribe clicked: ${type}, $${price}`);
+  button.classList.add('clicked');
+  button.disabled = true;
+  setTimeout(() => {
+    alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nRedirecting to Telegram for finalization.`);
+    window.location.href = 'https://t.me/ivan_nicho';
+  }, 300); // Match transition duration
+}
+
+function purchaseMedia(button) {
+  if (!button) {
+    console.error('Error: Button not found for purchaseMedia');
+    return;
+  }
+  console.log('Purchase Media clicked');
+  button.classList.add('clicked');
+  button.disabled = true;
+  setTimeout(() => {
+    alert('Thank you for purchasing Pictures & Videos ($400)!\nRedirecting to Telegram with access details.');
+    window.location.href = 'https://t.me/ivan_nicho';
+  }, 300); // Match transition duration
+}
+    
