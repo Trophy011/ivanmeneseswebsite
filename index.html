@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ivan Nicholo Meneses | Subscription Website</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
+  <style>@keyframes clickAnimation {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+
+.clicked {
+  animation: clickAnimation 0.4s ease-in-out forwards;
+}
     .fade-in {
       animation: fadeIn 0.8s ease-in-out forwards;
     }
@@ -174,3 +182,22 @@
 
 </body>
 </html>
+function subscribe(type, price) {
+  const buttons = document.querySelectorAll(`button[onclick="subscribe('${type}', ${price})"]`);
+  buttons.forEach(button => {
+    button.classList.add('clicked');
+    setTimeout(() => {
+      alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nRedirecting to Telegram for finalization.`);
+      window.location.href = 'https://t.me/ivan_nicho';
+    }, 400); // Match animation duration
+  });
+}
+
+function purchaseMedia() {
+  const button = document.querySelector('button[onclick="purchaseMedia()"]');
+  button.classList.add('clicked');
+  setTimeout(() => {
+    alert('Thank you for purchasing Pictures & Videos ($400)!\nRedirecting to Telegram with access details.');
+    window.location.href = 'https://t.me/ivan_nicho';
+  }, 400); // Match animation duration
+}
