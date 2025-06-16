@@ -6,4 +6,4 @@ public class Main
   {
 
   }
-}
+} delete broken image file
