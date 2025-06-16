@@ -156,66 +156,6 @@
   </footer>
 
   <script>
-    function toggleMeetGreet(show) {
-      document.getElementById('meetGreetBookingSection').style.display = show ? 'block' : 'none';
-      document.getElementById('meetGreetReserveButton').style.display = show ? 'none' : 'block';
-    }
 
-    function confirmMeetGreet() {const date = document.getElementById('meetGreetDate').value;
-      const time = document.getElementById('meetGreetTime').value;
-      const guests = document.getElementById('meetGreetGuests').value;
-      if (!date || !time) {
-        alert('Please select a date and time.');
-        return;
-      }
-      alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nWe will contact you within 24 hours via Telegram (@ivan_nicho).`);
-    }
-
-    function subscribe(type, price) <button onclick="subscribe(event, 'VVIP', 250)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
-
-    function purchaseMedia() <button onclick="purchaseMedia(event)" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg pulse">Purchase Now</button>
-    </ function toggleMeetGreet(show) {
-  const bookingSection = document.getElementById('meetGreetBookingSection');
-  const reserveButton = document.getElementById('meetGreetReserveButton');
-  if (bookingSection && reserveButton) {
-    bookingSection.style.display = show ? 'block' : 'none';
-    reserveButton.style.display = show ? 'none' : 'block';
-  }
-}
-
-function confirmMeetGreet() {
-  const date = document.getElementById('meetGreetDate')?.value;
-  const time = document.getElementById('meetGreetTime')?.value;
-  const guests = document.getElementById('meetGreetGuests')?.value;
-  if (!date || !time) {
-    alert('Please select a date and time.');
-    return;
-  }
-  alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nWe will contact you within 24 hours via Telegram (@ivan_nicho).`);
-}
-
-function subscribe(event, type, price) {
-  const button = event.currentTarget;
-  if (button) {
-    button.classList.add('clicked');
-    button.disabled = true; // Prevent multiple clicks
-    setTimeout(() => {
-      alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nRedirecting to Telegram for finalization.`);
-      window.location.href = 'https://t.me/ivan_nicho';
-    }, 400); // Match animation duration
-  }
-}
-
-function purchaseMedia(event) {
-  const button = event.currentTarget;
-  if (button) {
-    button.classList.add('clicked');
-    button.disabled = true; // Prevent multiple clicks
-    setTimeout(() => {
-      alert('Thank you for purchasing Pictures & Videos ($400)!\nRedirecting to Telegram with access details.');
-      window.location.href = 'https://t.me/ivan_nicho';
-    }, 400); // Match animation duration
-  }
-}
-
- 
+    HTML 
+    body
