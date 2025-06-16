@@ -178,11 +178,7 @@
     function purchaseMedia() {
       alert('Thank you for purchasing Pictures & Videos ($400)!\nWe will contact you via Telegram (@ivan_nicho) with access details.');
     }
-  </script>
-
-</body>
-</html>
-function subscribe(type, price) {
+  </script>function subscribe(type, price) {
   const buttons = document.querySelectorAll(`button[onclick="subscribe('${type}', ${price})"]`);
   buttons.forEach(button => {
     button.classList.add('clicked');
@@ -201,3 +197,7 @@ function purchaseMedia() {
     window.location.href = 'https://t.me/ivan_nicho';
   }, 400); // Match animation duration
 }
+  
+
+</body>
+</html>
