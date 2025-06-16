@@ -12,6 +12,11 @@
     .pulse {
       animation: pulse 2s infinite;
     }
+    .clicked {
+      transform: scale(1.1);
+      opacity: 0.7;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -29,9 +34,7 @@
   <header class="bg-purple-800 rounded-2xl shadow-xl p-6 mb-6 text-center fade-in">
     <h1 class="text-4xl font-extrabold text-pink-400">Welcome to Ivan Nicholo Meneses' Subscription Platform</h1>
     <p class="text-sm text-purple-300 mt-2">Exclusive experiences, subscriptions, and content</p>
-    <a href="https://t.me/ivan_nicho" target="_blank" class="inline-block mt-4 hover:from-yellow-600 bg-orange-600 pink-600 text-black font-bold py-2 px-6 rounded-xl transition-all duration-300">
-     
-      
+    <a href="https://t.me/ivan_nicho" target="_blank" class="inline-block mt-4 bg-orange-600 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-xl transition-all duration-300">
       Connect on Telegram: @ivan_nicho
     </a>
   </header>
@@ -111,7 +114,7 @@
             <li>Personalized shoutouts</li>
             <li>Private Telegram group</li>
           </ul>
-          <button onclick="subscribe('VVIP', 250)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
+          <button onclick="subscribe(this, 'VVIP', 250)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
         </div>
         <!-- VIP Subscription -->
         <div class="bg-gray-700 p-4 rounded-xl">
@@ -123,7 +126,7 @@
             <li>Monthly newsletters</li>
             <li>Community Telegram group</li>
           </ul>
-          <button onclick="subscribe('VIP', 150)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
+          <button onclick="subscribe(this, 'VIP', 150)" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-xl transition-all duration-300">Subscribe Now</button>
         </div>
       </div>
     </section>
@@ -134,7 +137,7 @@
       <p class="text-sm text-gray-300 mb-4">Purchase exclusive pictures and videos from Ivan Nicholo Meneses for $400.</p>
       <div class="text-2xl font-bold text-white mb-2">$400</div>
       <p class="text-sm text-gray-400 mb-4">One-time purchase for a curated collection.</p>
-      <button onclick="purchaseMedia()" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg pulse">
+      <button onclick="purchaseMedia(this)" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg pulse">
         Purchase Now
       </button>
     </section>
@@ -143,35 +146,68 @@
 
   <!-- Footer -->
   <footer class="bg-purple-800 rounded-2xl shadow-xl p-6 mt-6 text-center fade-in">
-    <p class="text-sm text-gray-300">&copy; 2025 Ivan Nicholo Meneses. All rights reserved.</p>
+    <p class="text-sm text-gray-300">© 2025 Ivan Nicholo Meneses. All rights reserved.</p>
     <a href="https://t.me/ivan_nicho" target="_blank" class="text-pink-400 hover:underline">Contact via Telegram: @ivan_nicho</a>
   </footer>
 
   <script>
     function toggleMeetGreet(show) {
-      document.getElementById('meetGreetBookingSection').style.display = show ? 'block' : 'none';
-      document.getElementById('meetGreetReserveButton').style.display = show ? 'none' : 'block';
+      const bookingSection = document.getElementById('meetGreetBookingSection');
+      const reserveButton = document.getElementById('meetGreetReserveButton');
+      if (bookingSection && reserveButton) {
+        bookingSection.style.display = show ? 'block' : 'none';
+        reserveButton.style.display = show ? 'none' : 'block';
+      } else {
+        console.error('Error: meetGreetBookingSection or meetGreetReserveButton not found');
+      }
     }
 
-    function confirmMeetGreet() {const date = document.getElementById('meetGreetDate').value;
-      const time = document.getElementById('meetGreetTime').value;
-      const guests = document.getElementById('meetGreetGuests').value;
+    function confirmMeetGreet() {
+      const date = document.getElementById('meetGreetDate')?.value;
+      const time = document.getElementById('meetGreetTime')?.value;
+      const guests = document.getElementById('meetGreetGuests')?.value;
+      const button = document.querySelector('#meetGreetBookingSection button:last-child');
       if (!date || !time) {
         alert('Please select a date and time.');
         return;
       }
-      alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nWe will contact you within 24 hours via Telegram (@ivan_nicho).`);
+      button.classList.add('clicked');
+      button.disabled = true;
+      console.log(`Meet & Greet clicked: Date=${date}, Time=${time}, Guests=${guests}`);
+      alert(`Meet & Greet Reservation Submitted!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\n\nRedirecting to Telegram (@ivan_nicho) to request payment details.`);
+      setTimeout(() => {
+        window.location.href = 'https://t.me/ivan_nicho';
+      }, 300);
     }
 
-    function subscribe(type, price) {
-      alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nWe will contact you via Telegram (@ivan_nicho) to finalize your subscription.`);
+    function subscribe(button, type, price) {
+      if (!button) {
+        console.error('Error: Subscribe button not found');
+        return;
+      }
+      button.classList.add('clicked');
+      button.disabled = true;
+      console.log(`Subscription clicked: Type=${type}, Price=$${price}/month`);
+      alert(`Thank you for subscribing to the ${type} plan ($${price}/month)!\nRedirecting to Telegram (@ivan_nicho) to request payment details.`);
+      setTimeout(() => {
+        window.location.href = 'https://t.me/ivan_nicho';
+      }, 300);
     }
 
-    function purchaseMedia() {
-      alert('Thank you for purchasing Pictures & Videos ($400)!\nWe will contact you via Telegram (@ivan_nicho) with access details.');
+    function purchaseMedia(button) {
+      if (!button) {
+        console.error('Error: Purchase Media button not found');
+        return;
+      }
+      button.classList.add('clicked');
+      button.disabled = true;
+      console.log('Pictures & Videos purchase clicked: Price=$400');
+      alert('Thank you for purchasing Pictures & Videos ($400)!\nRedirecting to Telegram (@ivan_nicho) to request payment details.');
+      setTimeout(() => {
+        window.location.href = 'https://t.me/ivan_nicho';
+      }, 300);
     }
   </script>
 
 </body>
 </html>
-
